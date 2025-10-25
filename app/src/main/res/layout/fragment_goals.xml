@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".ui.goals.GoalsFragment">
+
+    <TextView
+        android:id="@+id/tv_title_goals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/define_goals"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/top_spacer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.6" />
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/toggle_group_goals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
+        app:checkedButton="@id/btn_goal_lose_weight"
+        android:spacing="30dp"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <!--
+          Для кнопок используется селектор фона (goal_button_background_selector)
+          и селектор текста (goal_button_text_selector),
+          чтобы они меняли цвет при нажатии.
+
+          app:strokeWidth="0dp" - убирает обводку, которая есть у OutlinedButton
+        -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_goal_lose_weight"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:paddingVertical="14dp"
+            android:text="@string/lose_weight_button_text"
+            android:textColor="@drawable/goal_button_text_selector"
+            android:textSize="16sp"
+            app:backgroundTint="@drawable/goal_button_background_selector"
+            app:cornerRadius="12dp"
+            app:strokeColor="@color/default_component_border"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_goal_gain_muscle"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:elevation="4dp"
+            android:paddingVertical="14dp"
+            android:text="@string/pump_up_button_text"
+            android:textColor="@drawable/goal_button_text_selector"
+            android:textSize="16sp"
+            app:backgroundTint="@drawable/goal_button_background_selector"
+            app:cornerRadius="12dp"
+            app:strokeColor="@color/default_component_border"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_goal_gain_weight"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:elevation="4dp"
+            android:paddingVertical="14dp"
+            android:text="@string/gain_weight_button_text"
+            android:textColor="@drawable/goal_button_text_selector"
+            android:textSize="16sp"
+            app:backgroundTint="@drawable/goal_button_background_selector"
+            app:cornerRadius="12dp"
+            app:strokeColor="@color/default_component_border"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_goal_maintain_form"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:paddingVertical="14dp"
+            android:text="@string/keep_in_shape_button_text"
+            android:textColor="@drawable/goal_button_text_selector"
+            android:textSize="16sp"
+            app:backgroundTint="@drawable/goal_button_background_selector"
+            app:cornerRadius="12dp"
+            app:strokeColor="@color/default_component_border"
+            app:strokeWidth="2dp" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <View
+        android:id="@+id/medium_spacer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.6" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_continue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24sp"
+        android:backgroundTint="@color/active_component_background"
+        android:paddingVertical="10dp"
+        android:text="@string/continue_button_text"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:cornerRadius="12dp" />
+
+    <View
+        android:id="@+id/bottom_spacer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

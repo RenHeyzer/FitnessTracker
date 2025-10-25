@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">FitnessTracker</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="registration">РЕГИСТРАЦИЯ</string>
+    <string name="surname_hint">Фамилия</string>
+    <string name="firstname_hint">Имя</string>
+    <string name="email_hint">Email</string>
+    <string name="minus">−</string>
+    <string name="plus">+</string>
+    <string name="age">Возраст</string>
+    <string name="height_hint">Рост(см)</string>
+    <string name="weight_hint">Вес(кг)</string>
+    <string name="lifestyle_hint">Текущий образ жизни</string>
+    <string name="define_goals">ОПРЕДЕЛИТЕ ЦЕЛИ</string>
+    <string name="keep_in_shape_button_text">ПОДДЕРЖИВАТЬ ФОРМУ</string>
+    <string name="gain_weight_button_text">НАБРАТЬ ВЕС</string>
+    <string name="pump_up_button_text">НАКАЧАТЬСЯ</string>
+    <string name="lose_weight_button_text">ПОХУДЕТЬ</string>
+    <string name="continue_button_text">ПРОДОЛЖИТЬ</string>
+    <string name="kg_suffix">кг</string>
+    <string name="how_many_kg_lose_text">Сколько кг вы\nхотите сбросить?</string>
+    <string name="note_title">Заметка</string>
+    <string name="note_hint">Напишите что-нибудь</string>
+    <string name="progress_initial_value">0%</string>
+    <string name="todays_weight_text">СЕГОДНЯШНИЙ ВЕС</string>
+    <string name="save_button_text">СОХРАНИТЬ</string>
+    <string name="input_your_weight_text">Введите ваш текущий вес:</string>
+    <string name="calories_sum_text">Сумма ккал:</string>
+    <string name="mean_name_hint">Название блюда</string>
+    <string name="calories_hint">ккал</string>
+    <string name="meal_name_text">Название</string>
+    <string name="calories_text">ккал</string>
+    <string name="btn_plus_content_description">Кнопка для увелечения возраста на 1</string>
+    <string name="btn_minus_content_description">Кнопка для уменьшения возраста на 1</string>
+    <string name="recommended_calories_count_text">Рекомендуемое количество ккал за сегодня:</string>
+    <string name="todays_meals_list_text">Список съеденных блюд за сегодня:</string>
+    <string name="btn_add_meal_content_description">Кнопка для добавления нового блюда в список</string>
+    <string name="monday">Пн</string>
+    <string name="tuesday">Вт</string>
+    <string name="wednesday">Ср</string>
+    <string name="thursday">Чт</string>
+    <string name="friday">Пт</string>
+    <string name="saturday">Сб</string>
+    <string name="sunday">Вс</string>
+    <string name="iv_previous_month_content_description">Иконка для перехода на предыдущий месяц</string>
+    <string name="iv_next_month_content_description">Иконка для перехода на следующий месяц</string>
+    <string name="calendar_title">Календарь</string>
+    <string name="iv_profile_content_description">Изображение профиля</string>
+    <string name="statistic_title">Статистика</string>
+    <string name="home_title">Главная</string>
+    <string name="profile_title">Профиль</string>
+    <string-array name="lifestyles">
+        <item>Малоподвижный</item>
+        <item>Активный</item>
+    </string-array>
+</resources>

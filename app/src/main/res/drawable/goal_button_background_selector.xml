@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Цвет, когда кнопка ВЫБРАНА -->
+    <item android:color="@color/active_component_background" android:state_checked="true"/>
+
+    <!-- Цвет, когда кнопка НЕ ВЫБРАНА (по умолчанию) -->
+    <item android:color="@color/default_component_background" android:state_checked="false"/>
+</selector>

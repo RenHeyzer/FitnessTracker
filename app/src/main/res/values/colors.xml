@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="default_component_background">#F8F1FF</color>
+    <color name="default_component_border">#9575CD</color>
+    <color name="text_input_border_focused">#673AB7</color>
+    <color name="text_input_hint_unfocused">#B39DDB</color>
+    <color name="active_component_background">#9C51DD</color>
+    <color name="hint_color">#6E6E6E</color>
+    <color name="progress_track_color">#DFD1ED</color>
+    <color name="positive_component_background">#4CAF50</color>
+    <color name="dark_gray">#444444</color>
+</resources>
