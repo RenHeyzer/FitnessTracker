@@ -2,16 +2,17 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.devtools.ksp)
+    alias(libs.plugins.room)
 }
 
 android {
     namespace = "com.azim.fitness"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.azim.fitness"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
