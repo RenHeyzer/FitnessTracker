@@ -2,6 +2,7 @@ package com.azim.fitness.di
 
 import android.content.Context
 import androidx.room.Room
+import com.azim.fitness.data.repository.UserRepository
 import com.azim.fitness.db.FTDatabase
 
 class AppContainer(context: Context) {
@@ -12,4 +13,6 @@ class AppContainer(context: Context) {
     ).build()
 
     val userDao = ftDatabase.profileDao
+
+    val userRepository = UserRepository(userDao)
 }
