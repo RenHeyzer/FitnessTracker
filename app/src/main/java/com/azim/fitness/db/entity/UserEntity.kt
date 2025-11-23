@@ -2,11 +2,12 @@ package com.azim.fitness.db.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.UUID
 
 @Entity(tableName = "user")
 data class UserEntity(
     @PrimaryKey
-    val id: String,
+    val id: String = UUID.randomUUID().toString(),
     val lastname: String,
     val firstname: String,
     val age: Int,
