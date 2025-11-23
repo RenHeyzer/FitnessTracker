@@ -1,6 +1,7 @@
 package com.azim.fitness
 
 import android.app.Application
+import android.content.Context
 import com.azim.fitness.di.AppContainer
 
 class FitnessTrackerApp : Application() {
@@ -12,3 +13,6 @@ class FitnessTrackerApp : Application() {
         container = AppContainer(applicationContext)
     }
 }
+
+val Context.container: AppContainer
+    get() = (applicationContext as FitnessTrackerApp).container
