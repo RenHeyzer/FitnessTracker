@@ -3,16 +3,17 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.devtools.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.androidx.navigation.safeargs)
 }
 
 android {
     namespace = "com.azim.fitness"
-    compileSdk = 36
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.azim.fitness"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -35,9 +36,6 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 room {
@@ -51,7 +49,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
