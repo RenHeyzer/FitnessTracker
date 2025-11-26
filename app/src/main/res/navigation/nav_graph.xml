@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/registrationFragment">
+
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.azim.fitness.ui.registration.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration">
+        <action
+            android:id="@+id/action_registrationFragment_to_goalsFragment"
+            app:destination="@id/goalsFragment"
+            app:popUpTo="@id/registrationFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/goalsFragment"
+        android:name="com.azim.fitness.ui.goals.GoalsFragment"
+        android:label="fragment_goals"
+        tools:layout="@layout/fragment_goals">
+        <action
+            android:id="@+id/action_goalsFragment_to_goalsSecondFragment"
+            app:destination="@id/goalsSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/goalsSecondFragment"
+        android:name="com.azim.fitness.ui.goals.GoalsSecondFragment"
+        android:label="fragment_goals_second"
+        tools:layout="@layout/fragment_goals_second">
+        <action
+            android:id="@+id/action_goalsSecondFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.azim.fitness.ui.main.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/caloriesFragment"
+        android:name="com.azim.fitness.ui.calories.CaloriesFragment"
+        android:label="fragment_calories"
+        tools:layout="@layout/fragment_calories" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.azim.fitness.ui.calendar.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.azim.fitness.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

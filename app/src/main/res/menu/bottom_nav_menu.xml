@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_home"
+        android:id="@+id/mainFragment"
         android:icon="@drawable/ic_home"
         android:title="@string/home_title" />
 
     <item
-        android:id="@+id/nav_stats"
+        android:id="@+id/caloriesFragment"
         android:icon="@drawable/ic_bar_chart"
         android:title="@string/statistic_title" />
 
     <item
-        android:id="@+id/nav_calendar"
+        android:id="@+id/calendarFragment"
         android:icon="@drawable/ic_calendar_month"
         android:title="@string/calendar_title" />
 
     <item
-        android:id="@+id/nav_profile"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile_placeholder"
         android:title="@string/profile_title" />
 
