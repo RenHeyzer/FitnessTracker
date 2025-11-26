@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.azim.fitness.R
 import com.azim.fitness.container
 import com.azim.fitness.databinding.FragmentRegistrationBinding
@@ -107,9 +108,11 @@ class RegistrationFragment : Fragment() {
                             tilEmail.error = it.error.email
                             tilLifestyle.error = it.error.lifestyle
                         }
+
                         UIState.Loading -> {}
                         is UIState.Success<Long> -> {
                             Log.e("success", it.data.toString())
+                            findNavController().navigate(R.id.action_registrationFragment_to_goalsFragment)
                         }
                     }
 
