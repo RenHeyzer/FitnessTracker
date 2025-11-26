@@ -117,7 +117,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="@string/height_hint"
+            android:hint="@string/age"
             app:boxBackgroundColor="@color/default_component_background"
             app:boxCornerRadiusBottomEnd="12dp"
             app:boxCornerRadiusBottomStart="12dp"
@@ -134,6 +134,8 @@
                 android:id="@+id/et_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="0"
                 android:textColor="@color/black"
                 tools:text="20" />
 
@@ -144,8 +146,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
-            android:layout_marginEnd="10dp"
             android:layout_marginTop="4dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/stepper_background"
             android:gravity="center"
             android:orientation="horizontal"
@@ -200,6 +202,8 @@
                 android:id="@+id/et_height"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="0.0"
                 android:textColor="@color/black"
                 tools:text="180" />
 
@@ -228,6 +232,8 @@
                 android:id="@+id/et_weight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="0.0"
                 android:textColor="@color/black"
                 tools:text="70" />
 
@@ -255,8 +261,10 @@
             <AutoCompleteTextView
                 android:id="@+id/actv_lifestyle"
                 android:layout_width="match_parent"
+                android:focusable="false"
+                android:cursorVisible="false"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:inputType="none"
                 android:textColor="@color/black"
                 tools:text="Малоподвижный" />
 
