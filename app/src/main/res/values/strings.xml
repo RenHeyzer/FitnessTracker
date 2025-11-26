@@ -50,6 +50,8 @@
     <string name="statistic_title">Статистика</string>
     <string name="home_title">Главная</string>
     <string name="profile_title">Профиль</string>
+    <string name="sedentary_lifestyle">Малоподвижный</string>
+    <string name="active_lifestyle">Активный</string>
     <string-array name="lifestyles">
         <item>Малоподвижный</item>
         <item>Активный</item>
