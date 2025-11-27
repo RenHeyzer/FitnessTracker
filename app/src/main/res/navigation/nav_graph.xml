@@ -33,6 +33,10 @@
         <action
             android:id="@+id/action_goalsSecondFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <argument
+            android:name="goal"
+            app:argType="integer"
+            android:defaultValue="1" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
