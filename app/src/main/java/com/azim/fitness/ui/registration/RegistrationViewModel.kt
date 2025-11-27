@@ -7,10 +7,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.azim.fitness.data.repository.UserRepository
 import com.azim.fitness.db.entity.UserEntity
+import com.azim.fitness.preferences.PreferencesHelper
 import com.azim.fitness.utils.UIState
 import kotlinx.coroutines.launch
 
-class RegistrationViewModel(private val userRepository: UserRepository) : ViewModel() {
+class RegistrationViewModel(
+    private val userRepository: UserRepository,
+    private val preferencesHelper: PreferencesHelper
+) : ViewModel() {
 
     private val _uiState = MutableLiveData<UIState<Long, Messages>>(UIState.Loading)
     val uiState: LiveData<UIState<Long, Messages>> = _uiState
@@ -21,6 +25,7 @@ class RegistrationViewModel(private val userRepository: UserRepository) : ViewMo
             viewModelScope.launch {
                 val result = userRepository.addUser(user)
                 _uiState.value = UIState.Success(result)
+                preferencesHelper.isAuthorized = true
             }
         } else {
             _uiState.value = UIState.Error(messages)
@@ -68,11 +73,12 @@ class RegistrationViewModel(private val userRepository: UserRepository) : ViewMo
 
 @Suppress("UNCHECKED_CAST")
 class RegistrationViewModelFactory(
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val preferencesHelper: PreferencesHelper
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(RegistrationViewModel::class.java)) {
-            return RegistrationViewModel(userRepository) as T
+            return RegistrationViewModel(userRepository, preferencesHelper) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

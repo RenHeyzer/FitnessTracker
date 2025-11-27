@@ -25,7 +25,10 @@ class RegistrationFragment : Fragment() {
     private var _binding: FragmentRegistrationBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<RegistrationViewModel> {
-        RegistrationViewModelFactory(userRepository = requireContext().container.userRepository)
+        RegistrationViewModelFactory(
+            userRepository = requireContext().container.userRepository,
+            preferencesHelper = requireContext().container.preferencesHelper
+        )
     }
 
     override fun onCreateView(
