@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.azim.fitness.databinding.ActivityMainBinding
@@ -39,6 +40,21 @@ class MainActivity : AppCompatActivity() {
                 else -> hideBottomNavigation()
             }
         }
+
+        defineStartDestination(navController)
+    }
+
+    private fun defineStartDestination(navController: NavController) {
+        val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
+        with(container.preferencesHelper) {
+            when {
+                isAuthorized && isGoalsDefined -> navGraph.setStartDestination(R.id.mainFragment)
+                isAuthorized && !isGoalsDefined -> navGraph.setStartDestination(R.id.goalsFragment)
+                !isAuthorized && !isGoalsDefined -> navGraph.setStartDestination(R.id.registrationFragment)
+            }
+        }
+
+        navController.graph = navGraph
     }
 
     private fun hideBottomNavigation() {
@@ -46,6 +62,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showBottomNavigation() {
-        binding.bottomNavigation.visibility = View.GONE
+        binding.bottomNavigation.visibility = View.VISIBLE
     }
 }
