@@ -1,6 +1,7 @@
 package com.azim.fitness
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -28,5 +29,23 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         binding.bottomNavigation.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.mainFragment -> showBottomNavigation()
+                R.id.caloriesFragment -> showBottomNavigation()
+                R.id.calendarFragment -> showBottomNavigation()
+                R.id.profileFragment -> showBottomNavigation()
+                else -> hideBottomNavigation()
+            }
+        }
+    }
+
+    private fun hideBottomNavigation() {
+        binding.bottomNavigation.visibility = View.GONE
+    }
+
+    private fun showBottomNavigation() {
+        binding.bottomNavigation.visibility = View.GONE
     }
 }
