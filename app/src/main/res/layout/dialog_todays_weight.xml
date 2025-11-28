@@ -1,72 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bottom_sheet_background"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="24dp"
+    app:cardCornerRadius="12dp"
     tools:context=".ui.main.TodaysWeightDialog">
 
-    <TextView
-        android:id="@+id/tv_dialog_title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/todays_weight_text"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        tools:ignore="HardcodedText" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <TextView
-        android:id="@+id/tv_dialog_subtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:gravity="center"
-        android:text="@string/input_your_weight_text"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/black" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_target_weight"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        app:boxBackgroundColor="@color/default_component_background"
-        app:boxCornerRadiusBottomEnd="12dp"
-        app:boxCornerRadiusBottomStart="12dp"
-        app:boxCornerRadiusTopEnd="12dp"
-        app:boxCornerRadiusTopStart="12dp"
-        app:boxStrokeColor="@drawable/text_input_stroke_selector"
-        app:hintTextColor="@drawable/text_input_hint_selector"
-        app:suffixText="@string/kg_suffix"
-        app:suffixTextColor="@color/black">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_target_weight"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_dialog_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:text="0"
+            android:layout_marginBottom="16dp"
+            android:text="@string/todays_weight_text"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@color/black"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/tv_dialog_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:text="@string/input_your_weight_text"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_save_weight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/positive_component_background"
-        android:paddingVertical="10dp"
-        android:text="@string/save_button_text"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:cornerRadius="12dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_current_weight"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/default_component_background"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxStrokeColor="@drawable/text_input_stroke_selector"
+            app:hintEnabled="false"
+            app:hintTextColor="@drawable/text_input_hint_selector"
+            app:suffixText="@string/kg_suffix"
+            app:suffixTextColor="@color/black">
 
-</LinearLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_current_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:hint="0.0"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/positive_component_background"
+            android:paddingVertical="10dp"
+            android:text="@string/save_button_text"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:cornerRadius="12dp" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
