@@ -48,12 +48,11 @@ class GoalsFragment : Fragment() {
                     requireContext().container.preferencesHelper.goal = Goal.GAIN_MUSCLE
                     findNavController().navigate(R.id.action_goalsFragment_to_goalsSecondFragment)
                 }
-                R.id.btn_goal_gain_weight -> {
-                    requireContext().container.preferencesHelper.goal = Goal.GAIN_WEIGHT
-                    findNavController().navigate(R.id.action_goalsFragment_to_mainFragment)
-                }
                 R.id.btn_goal_maintain_form -> {
-                    requireContext().container.preferencesHelper.goal = Goal.MAINTAIN_FORM
+                    requireContext().container.preferencesHelper.apply {
+                        goal = Goal.MAINTAIN_FORM
+                        isGoalsDefined = true
+                    }
                     findNavController().navigate(R.id.action_goalsFragment_to_mainFragment)
                 }
             }

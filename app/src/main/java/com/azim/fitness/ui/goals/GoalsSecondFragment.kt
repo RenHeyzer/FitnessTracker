@@ -34,7 +34,7 @@ class GoalsSecondFragment : Fragment() {
             Goal.LOOSE_WEIGHT -> binding.tvSubtitleGoal.text =
                 getString(R.string.how_many_kg_lose_text)
 
-            Goal.GAIN_WEIGHT -> binding.tvSubtitleGoal.text =
+            Goal.GAIN_MUSCLE -> binding.tvSubtitleGoal.text =
                 getString(R.string.how_many_kg_gain_text)
 
             else -> {}
