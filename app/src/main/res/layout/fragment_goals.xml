@@ -51,7 +51,7 @@
             app:strokeColor="@color/default_component_border"
             app:strokeWidth="2dp" />
 
-        <com.google.android.material.button.MaterialButton
+        <!--<com.google.android.material.button.MaterialButton
             android:id="@+id/btn_goal_gain_muscle"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
@@ -66,9 +66,9 @@
             app:cornerRadius="12dp"
             app:strokeColor="@color/default_component_border"
             app:strokeWidth="2dp" />
-
+-->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_goal_gain_weight"
+            android:id="@+id/btn_goal_gain_muscle"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
