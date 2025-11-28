@@ -11,4 +11,6 @@
     <color name="progress_track_color">#DFD1ED</color>
     <color name="positive_component_background">#4CAF50</color>
     <color name="dark_gray">#444444</color>
+    <color name="green">#32CD32</color>
+    <color name="red">#FF2E2E</color>
 </resources>
