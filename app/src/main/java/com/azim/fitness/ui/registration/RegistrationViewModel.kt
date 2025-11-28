@@ -6,7 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.azim.fitness.data.repository.UserRepository
-import com.azim.fitness.db.entity.UserEntity
+import com.azim.fitness.db.entity.User
+import com.azim.fitness.db.entity.Weight
 import com.azim.fitness.preferences.PreferencesHelper
 import com.azim.fitness.utils.UIState
 import kotlinx.coroutines.launch
@@ -19,11 +20,16 @@ class RegistrationViewModel(
     private val _uiState = MutableLiveData<UIState<Long, Messages>>(UIState.Loading)
     val uiState: LiveData<UIState<Long, Messages>> = _uiState
 
-    fun register(user: UserEntity, lifestyle: String) {
+    fun register(user: User, lifestyle: String) {
         val messages = validateUserInfo(user, lifestyle)
         if (messages.hashCode() == 0) {
             viewModelScope.launch {
                 val result = userRepository.addUser(user)
+                val currentWeight = Weight(
+                    ownerId = user.id,
+                    weight = user.weight,
+                )
+                userRepository.addWeight(currentWeight)
                 _uiState.value = UIState.Success(result)
                 preferencesHelper.isAuthorized = true
             }
@@ -32,7 +38,7 @@ class RegistrationViewModel(
         }
     }
 
-    fun validateUserInfo(user: UserEntity, lifestyle: String): Messages {
+    fun validateUserInfo(user: User, lifestyle: String): Messages {
         with(user) {
             val lastnameMessage =
                 if (lastname.isBlank()) "Заполните поле!"

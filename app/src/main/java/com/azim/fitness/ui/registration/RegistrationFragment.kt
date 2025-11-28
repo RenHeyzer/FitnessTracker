@@ -16,7 +16,7 @@ import com.azim.fitness.R
 import com.azim.fitness.container
 import com.azim.fitness.databinding.FragmentRegistrationBinding
 import com.azim.fitness.db.entity.Lifestyle
-import com.azim.fitness.db.entity.UserEntity
+import com.azim.fitness.db.entity.User
 import com.azim.fitness.utils.UIState
 import kotlinx.coroutines.launch
 
@@ -83,7 +83,7 @@ class RegistrationFragment : Fragment() {
             val email = etEmail.text.toString().trim()
             val lifestyle = actvLifestyle.text.toString()
 
-            val user = UserEntity(
+            val user = User(
                 lastname = lastname,
                 firstname = firstname,
                 age = age,
