@@ -1,21 +1,23 @@
 package com.azim.fitness.db
 
-import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.azim.fitness.db.dao.ProfileDao
-import com.azim.fitness.db.entity.UserEntity
+import com.azim.fitness.db.dao.DailyResultDao
+import com.azim.fitness.db.dao.ExercisesDao
+import com.azim.fitness.db.dao.UserDao
+import com.azim.fitness.db.entity.CalendarDay
+import com.azim.fitness.db.entity.Exercise
+import com.azim.fitness.db.entity.User
+import com.azim.fitness.db.entity.Weight
 
 @Database(
-    entities = [UserEntity::class],
-    version = 1,
-    autoMigrations = [AutoMigration(
-        from = 1,
-        to = 2
-    )]
+    entities = [User::class, Weight::class, CalendarDay::class, Exercise::class],
+    version = 2,
 )
 abstract class FTDatabase : RoomDatabase() {
-    abstract val profileDao: ProfileDao
+    abstract val userDao: UserDao
+    abstract val dailyResultDao: DailyResultDao
+    abstract val exercisesDao: ExercisesDao
 
     companion object {
         const val DATABASE_NAME = "fitness_tracker_db"
