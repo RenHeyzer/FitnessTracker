@@ -53,6 +53,8 @@
     <string name="profile_title">Профиль</string>
     <string name="sedentary_lifestyle">Малоподвижный</string>
     <string name="active_lifestyle">Активный</string>
+    <string name="your_goal">Ваша цель:\n%1$s</string>
+    <string name="input_current_weight">Введите ваш текущий вес</string>
     <string-array name="lifestyles">
         <item>Малоподвижный</item>
         <item>Активный</item>
