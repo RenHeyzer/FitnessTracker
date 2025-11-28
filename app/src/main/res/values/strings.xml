@@ -20,6 +20,7 @@
     <string name="continue_button_text">ПРОДОЛЖИТЬ</string>
     <string name="kg_suffix">кг</string>
     <string name="how_many_kg_lose_text">Сколько кг вы\nхотите сбросить?</string>
+    <string name="how_many_kg_gain_text">Сколько кг вы\nхотите набрать?</string>
     <string name="note_title">Заметка</string>
     <string name="note_hint">Напишите что-нибудь</string>
     <string name="progress_initial_value">0%</string>

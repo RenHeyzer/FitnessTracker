@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_goalsFragment_to_goalsSecondFragment"
             app:destination="@id/goalsSecondFragment" />
+        <action
+            android:id="@+id/action_goalsFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/goalsSecondFragment"
@@ -32,11 +35,9 @@
         tools:layout="@layout/fragment_goals_second">
         <action
             android:id="@+id/action_goalsSecondFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-        <argument
-            android:name="goal"
-            app:argType="integer"
-            android:defaultValue="1" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/goalsSecondFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"

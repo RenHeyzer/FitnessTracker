@@ -8,7 +8,6 @@
     android:orientation="vertical"
     tools:context=".ui.goals.GoalsSecondFragment">
 
-    <!-- 1. Заголовок (такой же, как на прошлом экране) -->
     <TextView
         android:id="@+id/tv_title_goal_weight"
         android:layout_width="wrap_content"
@@ -26,7 +25,6 @@
         android:layout_height="0dp"
         android:layout_weight="0.4" />
 
-    <!-- 2. Подзаголовок -->
     <TextView
         android:id="@+id/tv_subtitle_goal"
         android:layout_width="wrap_content"
@@ -34,12 +32,10 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="24dp"
         android:gravity="center"
-        android:text="@string/how_many_kg_lose_text"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textColor="@color/black" />
 
 
-    <!-- 3. Поле ввода веса с суффиксом "кг" -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_target_weight"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -59,7 +55,7 @@
             android:id="@+id/et_target_weight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:text="0"
             android:textColor="@color/black"
             android:textStyle="bold" />
