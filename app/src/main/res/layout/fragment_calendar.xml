@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        android:background="@color/default_component_background"
+        android:background="@drawable/background_calendar"
         android:elevation="4dp"
         android:orientation="vertical"
         android:padding="20dp"
@@ -78,6 +78,11 @@
             <TextView
                 style="@style/WeekDayLabel"
                 android:layout_margin="4dp"
+                android:text="@string/sunday" />
+
+            <TextView
+                style="@style/WeekDayLabel"
+                android:layout_margin="4dp"
                 android:text="@string/monday" />
 
             <TextView
@@ -93,7 +98,7 @@
             <TextView
                 style="@style/WeekDayLabel"
                 android:layout_margin="4dp"
-                android:text="@string/thursday" />
+                android:text="@string/tuesday" />
 
             <TextView
                 style="@style/WeekDayLabel"
@@ -105,134 +110,14 @@
                 android:layout_margin="4dp"
                 android:text="@string/saturday" />
 
-            <TextView
-                style="@style/WeekDayLabel"
-                android:layout_margin="4dp"
-                android:text="@string/sunday" />
-
         </GridLayout>
 
-        <GridLayout
-            android:id="@+id/calendarGrid"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewCalendar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:columnCount="7">
-
-            <!-- Пример дней -->
-            <TextView
-                style="@style/DayCircleGray"
-                android:text="30" />
-
-            <TextView
-                style="@style/DayCircleGray"
-                tools:text="31" />
-
-            <TextView
-                style="@style/DayCircleRed"
-                tools:text="1" />
-
-            <TextView
-                style="@style/DayCircleGreen"
-                tools:text="2" />
-
-            <TextView
-                style="@style/DayCircleGreen"
-                tools:text="3" />
-
-            <TextView
-                style="@style/DayCircleGreen"
-                tools:text="4" />
-
-            <TextView
-                style="@style/DayCircleRed"
-                tools:text="5" />
-
-            <TextView
-                style="@style/DayCircleGray"
-                tools:text="6" />
-
-            <TextView
-                style="@style/DayCircleGray"
-                tools:text="7" />
-
-            <TextView
-                style="@style/DayCircleRed"
-                tools:text="8" />
-
-            <TextView
-                style="@style/DayCircleGreen"
-                tools:text="9" />
-
-            <TextView
-                style="@style/DayCircleGreen"
-                tools:text="10" />
-
-            <TextView
-                style="@style/DayCircleGreen"
-                tools:text="11" />
-
-            <TextView
-                style="@style/DayCircleRed"
-                tools:text="12" />
-
-            <TextView
-                style="@style/DayCircleGray"
-                tools:text="13" />
-
-            <TextView
-                style="@style/DayCircleGray"
-                tools:text="14" />
-
-            <TextView
-                style="@style/DayCircleRed"
-                tools:text="15" />
-
-            <TextView
-                style="@style/DayCircleGreen"
-                tools:text="16" />
-
-            <TextView
-                style="@style/DayCircleGreen"
-                tools:text="17" />
-
-            <TextView
-                style="@style/DayCircleGreen"
-                tools:text="18" />
-
-            <TextView
-                style="@style/DayCircleRed"
-                tools:text="19" />
-
-            <TextView
-                style="@style/DayCircleGray"
-                tools:text="20" />
-
-            <TextView
-                style="@style/DayCircleGray"
-                tools:text="21" />
-
-            <TextView
-                style="@style/DayCircleRed"
-                tools:text="22" />
-
-            <TextView
-                style="@style/DayCircleGreen"
-                tools:text="23" />
-
-            <TextView
-                style="@style/DayCircleGreen"
-                tools:text="24" />
-
-            <TextView
-                style="@style/DayCircleGreen"
-                tools:text="25" />
-
-            <TextView
-                style="@style/DayCircleRed"
-                tools:text="26" />
-
-        </GridLayout>
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="7" />
 
     </LinearLayout>
 
