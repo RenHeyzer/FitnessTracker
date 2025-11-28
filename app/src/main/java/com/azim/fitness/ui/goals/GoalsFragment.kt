@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.azim.fitness.R
+import com.azim.fitness.container
 import com.azim.fitness.databinding.FragmentGoalsBinding
 
 class GoalsFragment : Fragment() {
@@ -24,33 +25,37 @@ class GoalsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        isButtonEnabled()
         onGoalSelect()
     }
 
-    private fun onGoalSelect() = with(binding) {
-        toggleGroupGoals.addOnButtonCheckedListener { _, _, isChecked ->
+    private fun isButtonEnabled() {
+        binding.toggleGroupGoals.addOnButtonCheckedListener { _, _, isChecked ->
             if (isChecked) {
-                btnContinue.isEnabled = true
+                binding.btnContinue.isEnabled = true
             }
         }
-        btnContinue.setOnClickListener {
-            when (toggleGroupGoals.checkedButtonId) {
-                R.id.btn_goal_lose_weight ->
-                    findNavController().navigate(
-                        GoalsFragmentDirections.actionGoalsFragmentToGoalsSecondFragment(1)
-                    )
-                R.id.btn_goal_gain_muscle ->
-                    findNavController().navigate(
-                        GoalsFragmentDirections.actionGoalsFragmentToGoalsSecondFragment(2)
-                    )
-                R.id.btn_goal_gain_weight ->
-                    findNavController().navigate(
-                        GoalsFragmentDirections.actionGoalsFragmentToGoalsSecondFragment(3)
-                    )
-                R.id.btn_goal_maintain_form ->
-                    findNavController().navigate(
-                        GoalsFragmentDirections.actionGoalsFragmentToGoalsSecondFragment(4)
-                    )
+    }
+
+    private fun onGoalSelect() {
+        binding.btnContinue.setOnClickListener {
+            when (binding.toggleGroupGoals.checkedButtonId) {
+                R.id.btn_goal_lose_weight -> {
+                    requireContext().container.preferencesHelper.goal = Goal.LOOSE_WEIGHT
+                    findNavController().navigate(R.id.action_goalsFragment_to_goalsSecondFragment)
+                }
+                R.id.btn_goal_gain_muscle -> {
+                    requireContext().container.preferencesHelper.goal = Goal.GAIN_MUSCLE
+                    findNavController().navigate(R.id.action_goalsFragment_to_goalsSecondFragment)
+                }
+                R.id.btn_goal_gain_weight -> {
+                    requireContext().container.preferencesHelper.goal = Goal.GAIN_WEIGHT
+                    findNavController().navigate(R.id.action_goalsFragment_to_mainFragment)
+                }
+                R.id.btn_goal_maintain_form -> {
+                    requireContext().container.preferencesHelper.goal = Goal.MAINTAIN_FORM
+                    findNavController().navigate(R.id.action_goalsFragment_to_mainFragment)
+                }
             }
         }
     }
