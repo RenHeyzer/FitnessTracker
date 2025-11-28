@@ -2,6 +2,7 @@ package com.azim.fitness.di
 
 import android.content.Context
 import androidx.room.Room
+import com.azim.fitness.data.repository.DailyResultRepository
 import com.azim.fitness.data.repository.ExercisesRepository
 import com.azim.fitness.data.repository.UserRepository
 import com.azim.fitness.db.FTDatabase
@@ -12,11 +13,14 @@ class AppContainer(context: Context) {
         context = context.applicationContext,
         FTDatabase::class.java,
         FTDatabase.DATABASE_NAME
-    ).build()
+    ).fallbackToDestructiveMigration().build()
 
-    val userDao = ftDatabase.profileDao
+    val userDao = ftDatabase.userDao
+    val dailyResultDao = ftDatabase.dailyResultDao
+    val exercisesDao = ftDatabase.exercisesDao
     val preferencesHelper = PreferencesHelper(context)
 
     val userRepository = UserRepository(userDao)
-    val exercisesRepository = ExercisesRepository(preferencesHelper)
+    val exercisesRepository = ExercisesRepository(preferencesHelper, exercisesDao)
+    val dailyResultRepository = DailyResultRepository(dailyResultDao)
 }
