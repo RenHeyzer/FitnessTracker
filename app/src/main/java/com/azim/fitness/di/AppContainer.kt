@@ -2,6 +2,7 @@ package com.azim.fitness.di
 
 import android.content.Context
 import androidx.room.Room
+import com.azim.fitness.data.repository.ExercisesRepository
 import com.azim.fitness.data.repository.UserRepository
 import com.azim.fitness.db.FTDatabase
 import com.azim.fitness.preferences.PreferencesHelper
@@ -17,4 +18,5 @@ class AppContainer(context: Context) {
     val preferencesHelper = PreferencesHelper(context)
 
     val userRepository = UserRepository(userDao)
+    val exercisesRepository = ExercisesRepository(preferencesHelper)
 }
