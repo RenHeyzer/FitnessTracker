@@ -1,13 +1,30 @@
 package com.azim.fitness.data.repository
 
 import com.azim.fitness.R
-import com.azim.fitness.data.models.Exercise
+import com.azim.fitness.db.dao.ExercisesDao
+import com.azim.fitness.db.entity.Exercise
 import com.azim.fitness.preferences.PreferencesHelper
 import com.azim.fitness.ui.goals.Goal
 
-class ExercisesRepository(private val preferencesHelper: PreferencesHelper) {
+class ExercisesRepository(
+    private val preferencesHelper: PreferencesHelper,
+    private val exercisesDao: ExercisesDao
+) {
 
-    fun getExercises() = when (preferencesHelper.goal) {
+    fun getLocalExercises() = exercisesDao.getLocalExercises()
+
+    suspend fun addExercises(exercises: List<Exercise>) {
+        val count = exercisesDao.countRecords()
+        if (count == 0) {
+            exercisesDao.addExercises(exercises)
+        }
+    }
+
+    suspend fun updateExercise(id: Int, completed: Boolean) =
+        exercisesDao.updateExercise(id, completed)
+
+    fun getExercises() =
+        when (preferencesHelper.goal) {
         Goal.LOOSE_WEIGHT -> looseWeightExercises
         Goal.GAIN_MUSCLE -> gainMuscleExercises
         Goal.MAINTAIN_FORM -> maintainFormExercises
