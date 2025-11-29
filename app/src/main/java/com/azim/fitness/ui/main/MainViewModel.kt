@@ -79,7 +79,19 @@ class MainViewModel(
                         }
                     }
 
-                    Goal.MAINTAIN_FORM -> {}
+                    Goal.MAINTAIN_FORM -> {
+                        if (firstWeight != null) {
+                            if (it.weight > firstWeight.weight) {
+                                val weightDifference = it.weight - firstWeight.weight
+                                val progress = 100 + weightDifference
+                                _progress.value = progress.toInt()
+                            } else {
+                                val weightDifference = firstWeight.weight - it.weight
+                                val progress = 100 - weightDifference
+                                _progress.value = progress.toInt()
+                            }
+                        }
+                    }
                 }
 
             }
@@ -101,37 +113,6 @@ class MainViewModel(
         viewModelScope.launch {
             exercisesRepository.updateExercise(id, completed)
         }
-    }
-
-    fun addDailyResult() {
-        viewModelScope.launch {
-            dailyResultRepository.addDailyResult(
-                CalendarDay(
-                    date = LocalDate.now(),
-                    status = DayStatus.COMPLETED,
-                    isCurrentMonth = true
-                )
-            )
-        }
-    }
-
-    private fun checkTodaysActivity(exercises: List<Exercise>) {
-        viewModelScope.launch {
-            val isAllExercisesCompleted = exercises.all { exercise -> exercise.completed }
-            val currentDay = getLocalDateFromInstant(Instant.now())
-            userRepository.getCurrentWeight().collect {
-                val lastWeighing = getLocalDateFromInstant(it.timestamp)
-                if (lastWeighing == currentDay && isAllExercisesCompleted) {
-
-                }
-            }
-        }
-    }
-
-    private fun getLocalDateFromInstant(instant: Instant): LocalDate {
-        val zoneId = ZoneId.systemDefault()
-
-        return instant.atZone(zoneId).toLocalDate()
     }
 }
 
