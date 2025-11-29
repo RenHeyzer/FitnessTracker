@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -83,16 +84,23 @@ class MainFragment : Fragment() {
 
     private fun onTodayWeightClick() {
         binding.btnTodayWeight.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_todaysWeightDialog)
+            findNavController().apply {
+                currentDestination?.getAction(R.id.action_mainFragment_to_todaysWeightDialog)?.let {
+                    navigate(R.id.action_mainFragment_to_todaysWeightDialog)
+                }
+            }
         }
     }
 
     private fun processCurrentWeight() {
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Float>(
             TodaysWeightDialog.WEIGHT_KEY
-        )?.observe(viewLifecycleOwner) { currentWeight ->
-            currentWeight?.let {
-                viewModel.addWeight(it)
+        )?.let { liveData ->
+            liveData.observe(viewLifecycleOwner) { currentWeight ->
+                currentWeight?.let {
+                    Toast.makeText(requireContext(), "set NULL", Toast.LENGTH_SHORT).show()
+                    viewModel.addWeight(it)
+                }
             }
         }
     }

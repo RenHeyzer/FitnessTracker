@@ -115,7 +115,12 @@ class RegistrationFragment : Fragment() {
                         UIState.Loading -> {}
                         is UIState.Success<Long> -> {
                             Log.e("success", it.data.toString())
-                            findNavController().navigate(R.id.action_registrationFragment_to_goalsFragment)
+                            findNavController().apply {
+                                currentDestination?.getAction(R.id.action_registrationFragment_to_goalsFragment)
+                                    ?.let {
+                                        navigate(R.id.action_registrationFragment_to_goalsFragment)
+                                    }
+                            }
                         }
                     }
 

@@ -15,6 +15,7 @@ data class User(
     val height: Float,
     val email: String,
     val lifestyle: Lifestyle,
+    val photo: String? = null
 )
 
 enum class Lifestyle(val value: String) {

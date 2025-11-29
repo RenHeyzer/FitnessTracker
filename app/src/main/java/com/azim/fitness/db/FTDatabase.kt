@@ -12,7 +12,7 @@ import com.azim.fitness.db.entity.Weight
 
 @Database(
     entities = [User::class, Weight::class, CalendarDay::class, Exercise::class],
-    version = 2,
+    version = 3,
 )
 abstract class FTDatabase : RoomDatabase() {
     abstract val userDao: UserDao

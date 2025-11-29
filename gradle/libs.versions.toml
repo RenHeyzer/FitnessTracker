@@ -12,6 +12,7 @@ constraintlayout = "2.2.1"
 navigation = "2.9.6"
 room = "2.8.4"
 ksp = "2.3.3"
+glide = "5.0.5"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -27,7 +28,8 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
-
+com-github-bumptech-glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide"}
+com-github-bumptech-glide-ksp = { group = "com.github.bumptech.glide", name = "ksp", version.ref = "glide"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

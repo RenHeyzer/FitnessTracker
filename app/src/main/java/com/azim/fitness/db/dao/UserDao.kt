@@ -20,6 +20,21 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addUser(user: User): Long
 
+    @Query("UPDATE user SET lastname = :newLastname")
+    suspend fun updateLastname(newLastname: String)
+
+    @Query("UPDATE user SET firstname = :newFirstname")
+    suspend fun updateFirstname(newFirstname: String)
+
+    @Query("UPDATE user SET email = :newEmail")
+    suspend fun updateEmail(newEmail: String)
+
+    @Query("UPDATE user SET height = :newHeight")
+    suspend fun updateHeight(newHeight: Float)
+
+    @Query("UPDATE user SET photo = :newPhoto")
+    suspend fun updatePhoto(newPhoto: String)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addWeight(weight: Weight)
 

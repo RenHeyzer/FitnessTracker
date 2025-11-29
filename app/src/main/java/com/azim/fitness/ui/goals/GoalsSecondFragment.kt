@@ -48,7 +48,13 @@ class GoalsSecondFragment : Fragment() {
                 targetWeight = value
                 isGoalsDefined = true
             }
-            findNavController().navigate(R.id.action_goalsSecondFragment_to_mainFragment)
+
+            findNavController().apply {
+                currentDestination?.getAction(R.id.action_goalsSecondFragment_to_mainFragment)
+                    ?.let {
+                        navigate(R.id.action_goalsSecondFragment_to_mainFragment)
+                    }
+            }
         }
     }
 
