@@ -1,10 +1,13 @@
 package com.azim.fitness.utils
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
+@RequiresApi(Build.VERSION_CODES.O)
 fun Instant.getDayInfoFromInstant(): Int {
     val zoneId = ZoneId.systemDefault()
     val zonedDateTime: ZonedDateTime = atZone(zoneId)
@@ -12,6 +15,7 @@ fun Instant.getDayInfoFromInstant(): Int {
     return dayOfMonth
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 fun Instant.instantToLocalDate(): LocalDate {
     val zoneId = ZoneId.systemDefault()
     val zonedDateTime = atZone(zoneId)
