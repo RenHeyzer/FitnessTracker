@@ -5,14 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.azim.fitness.R
 import com.azim.fitness.container
 import com.azim.fitness.databinding.FragmentMainBinding
 import com.azim.fitness.ui.goals.Goal
 import com.azim.fitness.ui.main.adapter.ExercisesAdapter
+import kotlinx.coroutines.launch
 
 class MainFragment : Fragment() {
 
@@ -23,8 +26,8 @@ class MainFragment : Fragment() {
         MainViewModelFactory(
             exercisesRepository = requireContext().container.exercisesRepository,
             userRepository = requireContext().container.userRepository,
-            dailyResultRepository = requireContext().container.dailyResultRepository,
-            preferencesHelper = requireContext().container.preferencesHelper
+            preferencesHelper = requireContext().container.preferencesHelper,
+            notesRepository = requireContext().container.notesRepository
         )
     }
     private val adapter = ExercisesAdapter(
@@ -49,6 +52,10 @@ class MainFragment : Fragment() {
         onTodayWeightClick()
         processCurrentWeight()
         calculateProgress()
+        onSendNoteIconClick()
+        processNoteEvents()
+        processNoteState()
+        clearNoteError()
     }
 
     private fun setAdapter() {
@@ -110,6 +117,61 @@ class MainFragment : Fragment() {
             progress?.let {
                 binding.tvProgressPercent.text = "$progress%"
                 binding.goalProgress.setProgress(it, true)
+            }
+        }
+    }
+
+    private fun onSendNoteIconClick() {
+        binding.tilNote.setEndIconOnClickListener {
+            val noteText = binding.etNote.text.toString().trim()
+            viewModel.addNote(noteText)
+        }
+    }
+
+    private fun processNoteEvents() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.noteEvents.collect { event ->
+                when (event) {
+                    NoteEvent.NoteSaved -> {
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.note_saved),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    is NoteEvent.ShowToast -> {
+                        Toast.makeText(
+                            requireContext(),
+                            event.message,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun processNoteState() {
+        viewModel.noteState.observe(viewLifecycleOwner) { state ->
+            state?.let {
+                if (it.error == null) {
+                    if (binding.etNote.text.toString().isNotBlank()) {
+                        binding.etNote.text?.clear()
+                    }
+                } else {
+                    binding.tilNote.isErrorEnabled = true
+                    binding.tilNote.error = it.error
+                }
+            }
+        }
+    }
+
+    private fun clearNoteError() {
+        binding.etNote.addTextChangedListener {
+            if (!it.isNullOrBlank()) {
+                binding.tilNote.isErrorEnabled = false
+                binding.tilNote.error = null
             }
         }
     }

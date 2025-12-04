@@ -1,5 +1,6 @@
 package com.azim.fitness
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -72,6 +73,7 @@ class SaveDailyResultViewModel(
 
     private suspend fun defineStatus(lastDate: LocalDate): DayStatus {
         val weight = userRepository.getCurrentWeight().firstOrNull()
+        Log.e("lastDate", lastDate.toString())
         val wasYesterdayWeighing = weight?.timestamp?.toLocalDate() == lastDate
 
         val exercises = exercisesRepository.getLocalExercises().first()

@@ -41,6 +41,6 @@ interface UserDao {
     @Query("SELECT * FROM weight ORDER BY timestamp DESC LIMIT 1")
     fun getCurrentWeight(): Flow<Weight?>
 
-    @Query("SELECT * FROM weight WHERE weightId = 1")
+    @Query("SELECT * FROM weight ORDER BY weightId = 1")
     suspend fun getFirstWeight(): Weight?
 }
