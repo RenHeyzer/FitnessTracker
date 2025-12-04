@@ -1,5 +1,6 @@
 package com.azim.fitness.data.repository
 
+import android.util.Log
 import com.azim.fitness.R
 import com.azim.fitness.db.dao.ExercisesDao
 import com.azim.fitness.db.entity.Exercise
@@ -20,15 +21,21 @@ class ExercisesRepository(
         }
     }
 
-    suspend fun updateExercise(id: Int, completed: Boolean) =
-        exercisesDao.updateExercise(id, completed)
+    suspend fun updateExercise(id: Int, completed: Boolean) {
+        val count = exercisesDao.countRecords()
+        if (count != 0) {
+            exercisesDao.updateExercise(id, completed)
+        }
+    }
+
+    suspend fun clearAllExercises() = exercisesDao.clearAll()
 
     fun getExercises() =
         when (preferencesHelper.goal) {
-        Goal.LOOSE_WEIGHT -> looseWeightExercises
-        Goal.GAIN_MUSCLE -> gainMuscleExercises
-        Goal.MAINTAIN_FORM -> maintainFormExercises
-    }
+            Goal.LOOSE_WEIGHT -> looseWeightExercises
+            Goal.GAIN_MUSCLE -> gainMuscleExercises
+            Goal.MAINTAIN_FORM -> maintainFormExercises
+        }
 
     private val looseWeightExercises = listOf(
         Exercise(

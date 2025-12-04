@@ -5,15 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.azim.fitness.R
 import com.azim.fitness.container
 import com.azim.fitness.databinding.FragmentGoalsSecondBinding
+import java.time.LocalDate
 
 class GoalsSecondFragment : Fragment() {
 
     private var _binding: FragmentGoalsSecondBinding? = null
     private val binding get() = _binding!!
+    private val viewModel by viewModels<GoalsViewModel> {
+        GoalsViewModelFactory(requireContext().container.exercisesRepository)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +30,7 @@ class GoalsSecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.saveExercisesToLocal()
         defineGoal()
         saveTargetWeight()
     }
@@ -47,6 +53,7 @@ class GoalsSecondFragment : Fragment() {
             requireContext().container.preferencesHelper.apply {
                 targetWeight = value
                 isGoalsDefined = true
+                lastDate = LocalDate.now()
             }
 
             findNavController().apply {

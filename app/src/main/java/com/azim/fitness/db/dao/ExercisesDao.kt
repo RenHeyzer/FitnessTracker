@@ -16,7 +16,7 @@ interface ExercisesDao {
     @Query("SELECT * FROM exercise")
     fun getLocalExercises(): Flow<List<Exercise>>
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addExercises(exercises: List<Exercise>)
 
     @Query("UPDATE exercise SET completed = :completed WHERE id = :id")

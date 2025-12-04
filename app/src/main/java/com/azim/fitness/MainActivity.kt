@@ -2,7 +2,9 @@ package com.azim.fitness
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -14,10 +16,19 @@ import com.azim.fitness.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val viewModel by viewModels<SaveDailyResultViewModel> {
+        SaveDailyResultViewModelFactory(
+            preferencesHelper = container.preferencesHelper,
+            userRepository = container.userRepository,
+            exercisesRepository = container.exercisesRepository,
+            dailyResultRepository = container.dailyResultRepository
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        viewModel.startIfNeeded()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

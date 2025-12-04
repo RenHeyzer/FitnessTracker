@@ -9,8 +9,6 @@ import androidx.lifecycle.viewModelScope
 import com.azim.fitness.data.repository.DailyResultRepository
 import com.azim.fitness.db.entity.CalendarDay
 import com.azim.fitness.db.entity.DayStatus
-import com.azim.fitness.ui.main.MainViewModel
-import com.azim.fitness.utils.instantToLocalDate
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.time.Instant
@@ -27,7 +25,7 @@ class CalendarViewModel(
     val calendar: LiveData<List<CalendarDay>> = _calendar
 
     init {
-            val currentTimestamp = Instant.now()
+        val currentTimestamp = Instant.now()
         Log.e("timestamp", currentTimestamp.toString())
 //        viewModelScope.launch {
 //            val currentTimestamp = Instant.now()

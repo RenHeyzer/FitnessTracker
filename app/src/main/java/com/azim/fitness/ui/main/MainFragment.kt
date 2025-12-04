@@ -98,7 +98,6 @@ class MainFragment : Fragment() {
         )?.let { liveData ->
             liveData.observe(viewLifecycleOwner) { currentWeight ->
                 currentWeight?.let {
-                    Toast.makeText(requireContext(), "set NULL", Toast.LENGTH_SHORT).show()
                     viewModel.addWeight(it)
                 }
             }

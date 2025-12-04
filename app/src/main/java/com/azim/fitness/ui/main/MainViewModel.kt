@@ -9,16 +9,11 @@ import androidx.lifecycle.viewModelScope
 import com.azim.fitness.data.repository.DailyResultRepository
 import com.azim.fitness.data.repository.ExercisesRepository
 import com.azim.fitness.data.repository.UserRepository
-import com.azim.fitness.db.entity.CalendarDay
-import com.azim.fitness.db.entity.DayStatus
 import com.azim.fitness.db.entity.Exercise
 import com.azim.fitness.db.entity.Weight
 import com.azim.fitness.preferences.PreferencesHelper
 import com.azim.fitness.ui.goals.Goal
 import kotlinx.coroutines.launch
-import java.time.Instant
-import java.time.LocalDate
-import java.time.ZoneId
 
 class MainViewModel(
     private val exercisesRepository: ExercisesRepository,
@@ -34,15 +29,8 @@ class MainViewModel(
     val progress: LiveData<Int> = _progress
 
     init {
-        saveExercisesLocal()
         getLocalExercises()
         calculateGoalProgress()
-    }
-
-    private fun saveExercisesLocal() {
-        viewModelScope.launch {
-            exercisesRepository.addExercises(exercisesRepository.getExercises())
-        }
     }
 
     private fun getLocalExercises() {
@@ -57,43 +45,46 @@ class MainViewModel(
         viewModelScope.launch {
             val firstWeight = userRepository.getFirstWeight()
             Log.e("firstWeight", firstWeight.toString())
-            userRepository.getCurrentWeight().collect {
-                when (preferencesHelper.goal) {
-                    Goal.LOOSE_WEIGHT -> {
-                        if (firstWeight != null) {
-                            val weightDifference = firstWeight.weight - it.weight
-                            val progress = (weightDifference / preferencesHelper.targetWeight) * 100
-                            if (progress >= 0) {
-                                _progress.value = progress.toInt()
-                            }
-                        }
-                    }
-
-                    Goal.GAIN_MUSCLE -> {
-                        if (firstWeight != null) {
-                            val weightDifference = it.weight - firstWeight.weight
-                            val progress = (weightDifference / preferencesHelper.targetWeight) * 100
-                            if (progress >= 0) {
-                                _progress.value = progress.toInt()
-                            }
-                        }
-                    }
-
-                    Goal.MAINTAIN_FORM -> {
-                        if (firstWeight != null) {
-                            if (it.weight > firstWeight.weight) {
-                                val weightDifference = it.weight - firstWeight.weight
-                                val progress = 100 + weightDifference
-                                _progress.value = progress.toInt()
-                            } else {
+            userRepository.getCurrentWeight().collect { currentWeight ->
+                currentWeight?.let {
+                    when (preferencesHelper.goal) {
+                        Goal.LOOSE_WEIGHT -> {
+                            if (firstWeight != null) {
                                 val weightDifference = firstWeight.weight - it.weight
-                                val progress = 100 - weightDifference
-                                _progress.value = progress.toInt()
+                                val progress =
+                                    (weightDifference / preferencesHelper.targetWeight) * 100
+                                if (progress >= 0) {
+                                    _progress.value = progress.toInt()
+                                }
+                            }
+                        }
+
+                        Goal.GAIN_MUSCLE -> {
+                            if (firstWeight != null) {
+                                val weightDifference = it.weight - firstWeight.weight
+                                val progress =
+                                    (weightDifference / preferencesHelper.targetWeight) * 100
+                                if (progress >= 0) {
+                                    _progress.value = progress.toInt()
+                                }
+                            }
+                        }
+
+                        Goal.MAINTAIN_FORM -> {
+                            if (firstWeight != null) {
+                                if (it.weight > firstWeight.weight) {
+                                    val weightDifference = it.weight - firstWeight.weight
+                                    val progress = 100 + weightDifference
+                                    _progress.value = progress.toInt()
+                                } else {
+                                    val weightDifference = firstWeight.weight - it.weight
+                                    val progress = 100 - weightDifference
+                                    _progress.value = progress.toInt()
+                                }
                             }
                         }
                     }
                 }
-
             }
         }
     }

@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
+import java.time.ZoneOffset
 import java.time.ZonedDateTime
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -16,9 +17,6 @@ fun Instant.getDayInfoFromInstant(): Int {
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
-fun Instant.instantToLocalDate(): LocalDate {
-    val zoneId = ZoneId.systemDefault()
-    val zonedDateTime = atZone(zoneId)
-    val localDate = zonedDateTime.toLocalDate()
-    return localDate
+fun Instant.toLocalDate(): LocalDate {
+    return this.atOffset(ZoneOffset.UTC).toLocalDate()
 }

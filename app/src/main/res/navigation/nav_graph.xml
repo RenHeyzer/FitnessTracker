@@ -36,7 +36,7 @@
         <action
             android:id="@+id/action_goalsSecondFragment_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:popUpTo="@id/goalsSecondFragment"
+            app:popUpTo="@id/goalsFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
