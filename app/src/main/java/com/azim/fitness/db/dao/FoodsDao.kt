@@ -14,8 +14,8 @@ interface FoodsDao {
     @Query("SELECT * FROM food WHERE date = :date")
     fun getTodayFoods(date: String): Flow<List<Food>>
 
-    @Query("SELECT SUM(calories) FROM food")
-    fun getTotalCalories(): Flow<Float?>
+    @Query("SELECT SUM(calories) FROM food WHERE date = :date")
+    fun getTotalCalories(date: String): Flow<Float?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addFood(food: Food): Long

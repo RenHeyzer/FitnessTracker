@@ -47,7 +47,8 @@ class CaloriesViewModel(
 
     private fun getTotalCalories() {
         viewModelScope.launch {
-            foodsRepository.getTotalCalories().collect { value ->
+            val today = LocalDate.now().toString()
+            foodsRepository.getTotalCalories(today).collect { value ->
                 _totalCalories.value = value
             }
         }
