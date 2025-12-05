@@ -5,7 +5,7 @@ import com.azim.fitness.db.entity.Note
 
 class NotesRepository(private val notesDao: NotesDao) {
 
-    fun getNotes() = notesDao.getNotes()
+    fun getTodayNotes(date: String) = notesDao.getTodayNotes(date)
 
     suspend fun addNote(note: Note) = notesDao.addNote(note)
 }

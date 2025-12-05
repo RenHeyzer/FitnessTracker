@@ -24,21 +24,6 @@ class CalendarViewModel(
     private val _calendar = MutableLiveData(listOf<CalendarDay>())
     val calendar: LiveData<List<CalendarDay>> = _calendar
 
-    init {
-        val currentTimestamp = Instant.now()
-        Log.e("timestamp", currentTimestamp.toString())
-//        viewModelScope.launch {
-//            val currentTimestamp = Instant.now()
-//            dailyResultRepository.addDailyResult(
-//                CalendarDay(
-//                    date = currentTimestamp.instantToLocalDate(),
-//                    status = DayStatus.COMPLETED,
-//                    isCurrentMonth = true
-//                )
-//            )
-//        }
-    }
-
     fun generateMonthDays(yearMonth: YearMonth, events: Map<LocalDate, DayStatus>) {
         viewModelScope.launch {
             val days = mutableListOf<CalendarDay>()

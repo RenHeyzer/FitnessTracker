@@ -1,6 +1,7 @@
 package com.azim.fitness.ui.calendar.adapter
 
 import android.graphics.drawable.GradientDrawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -12,7 +13,9 @@ import com.azim.fitness.databinding.ItemCalendarDayBinding
 import com.azim.fitness.db.entity.CalendarDay
 import com.azim.fitness.db.entity.DayStatus
 
-class CalendarAdapter() : ListAdapter<CalendarDay, CalendarAdapter.DayViewHolder>(DiffCallback()) {
+class CalendarAdapter(
+    private val onDayClick: (date: String) -> Unit
+) : ListAdapter<CalendarDay, CalendarAdapter.DayViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayViewHolder {
         val binding =
@@ -30,6 +33,15 @@ class CalendarAdapter() : ListAdapter<CalendarDay, CalendarAdapter.DayViewHolder
 
     inner class DayViewHolder(private val binding: ItemCalendarDayBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                getItem(absoluteAdapterPosition)?.let {
+                    onDayClick(it.date.toString())
+                }
+            }
+        }
+
         fun bind(day: CalendarDay) {
             binding.tvDay.text = day.date.dayOfMonth.toString()
 

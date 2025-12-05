@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface NotesDao {
 
-    @Query("SELECT * FROM note")
-    fun getNotes(): Flow<List<Note>>
+    @Query("SELECT * FROM note WHERE date = :date")
+    fun getTodayNotes(date: String): Flow<List<Note>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addNote(note: Note): Long

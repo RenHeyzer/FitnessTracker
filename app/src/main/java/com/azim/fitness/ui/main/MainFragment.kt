@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -100,14 +101,9 @@ class MainFragment : Fragment() {
     }
 
     private fun processCurrentWeight() {
-        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Float>(
-            TodaysWeightDialog.WEIGHT_KEY
-        )?.let { liveData ->
-            liveData.observe(viewLifecycleOwner) { currentWeight ->
-                currentWeight?.let {
-                    viewModel.addWeight(it)
-                }
-            }
+        setFragmentResultListener(TodaysWeightDialog.REQUEST_KEY) { _, bundle ->
+            val weight = bundle.getFloat(TodaysWeightDialog.WEIGHT_KEY)
+            viewModel.addWeight(weight)
         }
     }
 

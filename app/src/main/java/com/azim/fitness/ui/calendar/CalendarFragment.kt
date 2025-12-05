@@ -1,11 +1,14 @@
 package com.azim.fitness.ui.calendar
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.azim.fitness.R
 import com.azim.fitness.container
 import com.azim.fitness.databinding.FragmentCalendarBinding
 import com.azim.fitness.db.entity.DayStatus
@@ -22,7 +25,14 @@ class CalendarFragment : Fragment() {
         CalendarViewModelFactory(requireContext().container.dailyResultRepository)
     }
 
-    private val adapter = CalendarAdapter()
+    private val adapter = CalendarAdapter { date ->
+        findNavController().apply {
+            currentDestination?.getAction(R.id.action_calendarFragment_to_todayHistoryBottomSheetDialog)
+                ?.let {
+                    navigate(CalendarFragmentDirections.actionCalendarFragmentToTodayHistoryBottomSheetDialog(date))
+                }
+        }
+    }
 
     private var currentMonth = YearMonth.now()
     private val eventsMap = mutableMapOf<LocalDate, DayStatus>()

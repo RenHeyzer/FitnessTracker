@@ -11,6 +11,8 @@ import com.azim.fitness.db.entity.Food
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
+import java.time.Instant
+import java.time.LocalDate
 
 class CaloriesViewModel(
     private val userRepository: UserRepository,
@@ -36,7 +38,8 @@ class CaloriesViewModel(
 
     private fun getFoods() {
         viewModelScope.launch {
-            foodsRepository.getFoods().collect { foods ->
+            val today = LocalDate.now().toString()
+            foodsRepository.getTodayFoods(today).collect { foods ->
                 _foods.value = foods
             }
         }

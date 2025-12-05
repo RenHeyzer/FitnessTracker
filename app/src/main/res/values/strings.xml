@@ -57,6 +57,9 @@
     <string name="input_current_weight">Введите ваш текущий вес</string>
     <string name="note_saved">Заметка сохранена</string>
     <string name="meal_saved">Блюдо сохранено</string>
+    <string name="weight">Вес</string>
+    <string name="calories">Калории</string>
+    <string name="notes">Заметки</string>
     <string-array name="lifestyles">
         <item>Малоподвижный</item>
         <item>Активный</item>

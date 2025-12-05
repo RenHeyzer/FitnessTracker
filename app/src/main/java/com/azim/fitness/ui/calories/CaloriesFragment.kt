@@ -1,7 +1,6 @@
 package com.azim.fitness.ui.calories
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -131,7 +130,7 @@ class CaloriesFragment : Fragment() {
     private fun processTotalCalories() {
         viewModel.totalCalories.observe(viewLifecycleOwner) {
             it ?: return@observe
-            binding.tvTotalCaloriesValue.text = it.toString()
+            binding.tvTotalCaloriesValue.text = "%.2f".format(it)
         }
     }
 

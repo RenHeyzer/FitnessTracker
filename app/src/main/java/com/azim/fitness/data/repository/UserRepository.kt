@@ -39,4 +39,5 @@ class UserRepository(private val userDao: UserDao) {
     suspend fun addWeight(weight: Weight) = userDao.addWeight(weight)
     fun getCurrentWeight() = userDao.getCurrentWeight()
     suspend fun getFirstWeight() = userDao.getFirstWeight()
+    fun getTodayWeights(date: String) = userDao.getTodayWeights(date)
 }

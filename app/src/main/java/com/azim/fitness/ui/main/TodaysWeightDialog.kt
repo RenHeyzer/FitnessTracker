@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import com.azim.fitness.R
 import com.azim.fitness.databinding.DialogTodaysWeightBinding
@@ -31,13 +33,11 @@ class TodaysWeightDialog : DialogFragment() {
         binding.btnSaveWeight.setOnClickListener {
             val currentWeight = binding.etCurrentWeight.text.toString().trim()
             if (currentWeight.isNotBlank() && currentWeight != "0.0" && currentWeight != "0") {
-                findNavController().apply {
-                    previousBackStackEntry?.savedStateHandle?.set(
-                        WEIGHT_KEY,
-                        currentWeight.toFloat()
-                    )
-                    popBackStack()
-                }
+                setFragmentResult(
+                    REQUEST_KEY,
+                    bundleOf(WEIGHT_KEY to currentWeight.toFloat())
+                )
+                findNavController().popBackStack()
             } else {
                 binding.tilCurrentWeight.error = getString(R.string.input_current_weight)
             }
@@ -50,6 +50,7 @@ class TodaysWeightDialog : DialogFragment() {
     }
 
     companion object {
+        const val REQUEST_KEY = "requestKey"
         const val WEIGHT_KEY = "weight"
     }
 }

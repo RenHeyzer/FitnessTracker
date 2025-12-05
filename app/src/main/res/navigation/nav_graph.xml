@@ -49,10 +49,19 @@
             app:destination="@id/todaysWeightDialog" />
     </fragment>
     <fragment
+        android:id="@+id/caloriesFragment"
+        android:name="com.azim.fitness.ui.calories.CaloriesFragment"
+        android:label="fragment_calories"
+        tools:layout="@layout/fragment_calories" />
+    <fragment
         android:id="@+id/calendarFragment"
         android:name="com.azim.fitness.ui.calendar.CalendarFragment"
         android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_calendarFragment_to_todayHistoryBottomSheetDialog"
+            app:destination="@id/todayHistoryBottomSheetDialog" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.azim.fitness.ui.profile.ProfileFragment"
@@ -63,9 +72,15 @@
         android:name="com.azim.fitness.ui.main.TodaysWeightDialog"
         android:label="dialog_todays_weight"
         tools:layout="@layout/dialog_todays_weight" />
-    <fragment
-        android:id="@+id/caloriesFragment"
-        android:name="com.azim.fitness.ui.calories.CaloriesFragment"
-        android:label="fragment_calories"
-        tools:layout="@layout/fragment_calories" />
+    <dialog
+        android:id="@+id/todayHistoryBottomSheetDialog"
+        android:name="com.azim.fitness.ui.history.TodayHistoryBottomSheetDialog"
+        android:label="dialog_today_history_bottom_sheet"
+        tools:layout="@layout/dialog_today_history_bottom_sheet" >
+        <argument
+            android:name="date"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+    </dialog>
 </navigation>

@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.azim.fitness.db.converters.InstantConverter
 import java.time.Instant
+import java.time.LocalDate
 
 @Entity(tableName = "food")
 data class Food(
@@ -13,6 +14,7 @@ data class Food(
     val ownerId: String,
     val foodName: String,
     val calories: Float,
+    val date: String = LocalDate.now().toString(),
     @field:TypeConverters(InstantConverter::class)
     val timestamp: Instant = Instant.now()
 )
