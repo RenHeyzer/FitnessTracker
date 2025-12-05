@@ -49,11 +49,6 @@
             app:destination="@id/todaysWeightDialog" />
     </fragment>
     <fragment
-        android:id="@+id/caloriesFragment"
-        android:name="com.azim.fitness.ui.calories.CaloriesFragment"
-        android:label="fragment_calories"
-        tools:layout="@layout/fragment_calories" />
-    <fragment
         android:id="@+id/calendarFragment"
         android:name="com.azim.fitness.ui.calendar.CalendarFragment"
         android:label="fragment_calendar"
@@ -68,4 +63,9 @@
         android:name="com.azim.fitness.ui.main.TodaysWeightDialog"
         android:label="dialog_todays_weight"
         tools:layout="@layout/dialog_todays_weight" />
+    <fragment
+        android:id="@+id/caloriesFragment"
+        android:name="com.azim.fitness.ui.calories.CaloriesFragment"
+        android:label="fragment_calories"
+        tools:layout="@layout/fragment_calories" />
 </navigation>

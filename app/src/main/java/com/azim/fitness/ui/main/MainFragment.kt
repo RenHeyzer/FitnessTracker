@@ -156,7 +156,7 @@ class MainFragment : Fragment() {
         viewModel.noteState.observe(viewLifecycleOwner) { state ->
             state?.let {
                 if (it.error == null) {
-                    if (binding.etNote.text.toString().isNotBlank()) {
+                    if (binding.etNote.text?.isNotBlank() == true) {
                         binding.etNote.text?.clear()
                     }
                 } else {

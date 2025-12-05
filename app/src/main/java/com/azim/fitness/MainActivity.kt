@@ -52,7 +52,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        defineStartDestination(navController)
+        if (savedInstanceState == null) {
+            defineStartDestination(navController)
+        }
     }
 
     private fun defineStartDestination(navController: NavController) {

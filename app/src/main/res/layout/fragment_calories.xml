@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".ui.calories.CaloriesFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="16dp"
@@ -56,7 +54,6 @@
             app:layout_constraintTop_toBottomOf="@id/tv_calories_value"
             app:layout_constraintWidth_max="488dp" />
 
-        <!-- 4. Таблица (CardView с TableLayout) -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_meals"
             android:layout_width="0dp"
@@ -104,49 +101,18 @@
                     android:layout_marginBottom="10dp"
                     android:background="@color/black" />
 
-                <TableRow>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textColor="@color/black"
-                        tools:text="1. Салат" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:textColor="@color/black"
-                        tools:text="250" />
-
-                </TableRow>
-
-                <TableRow>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textColor="@color/black"
-                        tools:text="2. Беш бармак" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:textColor="@color/black"
-                        tools:text="250" />
-
-                </TableRow>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_foods"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_food" />
 
             </TableLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- 5. Поля ввода -->
         <LinearLayout
             android:id="@+id/input_section"
             android:layout_width="0dp"
@@ -200,7 +166,7 @@
                     android:id="@+id/et_calories_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -214,7 +180,6 @@
                 app:tint="@color/white" />
         </LinearLayout>
 
-        <!-- 6. Итого -->
         <TextView
             android:id="@+id/tv_total_calories_label"
             android:layout_width="0dp"
@@ -257,4 +222,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

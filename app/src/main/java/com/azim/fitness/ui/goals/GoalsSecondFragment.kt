@@ -16,9 +16,6 @@ class GoalsSecondFragment : Fragment() {
 
     private var _binding: FragmentGoalsSecondBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<GoalsViewModel> {
-        GoalsViewModelFactory(requireContext().container.exercisesRepository)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +27,6 @@ class GoalsSecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.saveExercisesToLocal()
         defineGoal()
         saveTargetWeight()
     }

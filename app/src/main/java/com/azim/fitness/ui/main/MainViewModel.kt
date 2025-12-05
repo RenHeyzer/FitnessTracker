@@ -38,8 +38,16 @@ class MainViewModel(
     val noteState: LiveData<NoteUiState> = _noteState
 
     init {
+        saveExercisesToLocal()
         getLocalExercises()
         calculateGoalProgress()
+    }
+
+
+    fun saveExercisesToLocal() {
+        viewModelScope.launch {
+            exercisesRepository.addExercises(exercisesRepository.getExercises())
+        }
     }
 
     private fun getLocalExercises() {

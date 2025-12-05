@@ -36,6 +36,7 @@ class CalendarFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.recyclerViewCalendar.adapter = adapter
 
         updateCalendar()
@@ -61,6 +62,7 @@ class CalendarFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.recyclerViewCalendar.adapter = null
         _binding = null
     }
 }

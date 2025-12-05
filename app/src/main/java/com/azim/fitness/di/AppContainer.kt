@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.azim.fitness.data.repository.DailyResultRepository
 import com.azim.fitness.data.repository.ExercisesRepository
+import com.azim.fitness.data.repository.FoodsRepository
 import com.azim.fitness.data.repository.NotesRepository
 import com.azim.fitness.data.repository.UserRepository
 import com.azim.fitness.db.FTDatabase
@@ -20,10 +21,13 @@ class AppContainer(context: Context) {
     val dailyResultDao = ftDatabase.dailyResultDao
     val exercisesDao = ftDatabase.exercisesDao
     val notesDao = ftDatabase.notesDao
+    val foodsDao = ftDatabase.foodsDao
+
     val preferencesHelper = PreferencesHelper(context)
 
     val userRepository = UserRepository(userDao)
     val exercisesRepository = ExercisesRepository(preferencesHelper, exercisesDao)
     val dailyResultRepository = DailyResultRepository(dailyResultDao)
     val notesRepository by lazy {  NotesRepository(notesDao) }
+    val foodsRepository = FoodsRepository(foodsDao)
 }
