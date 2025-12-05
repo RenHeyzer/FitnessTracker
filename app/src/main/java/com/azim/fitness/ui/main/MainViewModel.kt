@@ -70,9 +70,7 @@ class MainViewModel(
                                 val weightDifference = firstWeight.weight - it.weight
                                 val progress =
                                     (weightDifference / preferencesHelper.targetWeight) * 100
-                                if (progress >= 0) {
-                                    _progress.value = progress.toInt()
-                                }
+                                _progress.value = progress.toInt()
                             }
                         }
 
@@ -174,6 +172,6 @@ data class NoteUiState(
 )
 
 sealed class NoteEvent {
-    data class ShowToast(val message: String): NoteEvent()
+    data class ShowToast(val message: String) : NoteEvent()
     object NoteSaved : NoteEvent()
 }

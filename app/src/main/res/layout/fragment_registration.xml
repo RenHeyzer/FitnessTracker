@@ -126,6 +126,7 @@
             app:boxStrokeColor="@drawable/text_input_stroke_selector"
             app:hintTextColor="@drawable/text_input_hint_selector"
             app:layout_constraintEnd_toEndOf="parent"
+            app:placeholderText="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_email"
             app:layout_constraintWidth_max="488dp">
@@ -135,7 +136,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:text="0"
                 android:textColor="@color/black"
                 tools:text="20" />
 
@@ -146,12 +146,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/stepper_background"
             android:gravity="center"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@id/til_age"
             app:layout_constraintEnd_toEndOf="@id/til_age"
             app:layout_constraintTop_toTopOf="@id/til_age">
 
@@ -195,6 +194,7 @@
             app:hintTextColor="@drawable/text_input_hint_selector"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:placeholderText="0.0"
             app:layout_constraintTop_toBottomOf="@id/til_age"
             app:layout_constraintWidth_max="488dp">
 
@@ -203,7 +203,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:text="0.0"
                 android:textColor="@color/black"
                 tools:text="180" />
 
@@ -223,6 +222,7 @@
             app:boxCornerRadiusTopStart="12dp"
             app:boxStrokeColor="@drawable/text_input_stroke_selector"
             app:hintTextColor="@drawable/text_input_hint_selector"
+            app:placeholderText="0.0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_height"
@@ -233,7 +233,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:text="0.0"
                 android:textColor="@color/black"
                 tools:text="70" />
 

@@ -104,6 +104,7 @@ class MainFragment : Fragment() {
         setFragmentResultListener(TodaysWeightDialog.REQUEST_KEY) { _, bundle ->
             val weight = bundle.getFloat(TodaysWeightDialog.WEIGHT_KEY)
             viewModel.addWeight(weight)
+            Toast.makeText(requireContext(), getString(R.string.weight_saved), Toast.LENGTH_SHORT).show()
         }
     }
 

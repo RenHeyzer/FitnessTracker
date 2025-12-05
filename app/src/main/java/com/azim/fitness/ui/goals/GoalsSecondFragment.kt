@@ -45,7 +45,7 @@ class GoalsSecondFragment : Fragment() {
 
     private fun saveTargetWeight() {
         binding.btnContinueWeight.setOnClickListener {
-            val value = binding.etTargetWeight.text.toString().trim().toFloat()
+            val value = binding.etTargetWeight.text.toString().trim().toFloatOrNull() ?: 0.0f
             requireContext().container.preferencesHelper.apply {
                 targetWeight = value
                 isGoalsDefined = true

@@ -10,6 +10,7 @@ import com.azim.fitness.db.entity.User
 import com.azim.fitness.db.entity.Weight
 import com.azim.fitness.preferences.PreferencesHelper
 import com.azim.fitness.utils.UIState
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class RegistrationViewModel(
@@ -17,19 +18,21 @@ class RegistrationViewModel(
     private val preferencesHelper: PreferencesHelper
 ) : ViewModel() {
 
-    private val _uiState = MutableLiveData<UIState<Long, Messages>>(UIState.Loading)
+    private val _uiState = MutableLiveData<UIState<Long, Messages>>(UIState.Idle)
     val uiState: LiveData<UIState<Long, Messages>> = _uiState
 
     fun register(user: User, lifestyle: String) {
         val messages = validateUserInfo(user, lifestyle)
         if (messages.hashCode() == 0) {
             viewModelScope.launch {
+                _uiState.value = UIState.Loading
                 val result = userRepository.addUser(user)
                 val currentWeight = Weight(
                     ownerId = user.id,
                     weight = user.weight,
                 )
                 userRepository.addWeight(currentWeight)
+                delay(500L)
                 _uiState.value = UIState.Success(result)
                 preferencesHelper.isAuthorized = true
             }
@@ -51,7 +54,7 @@ class RegistrationViewModel(
                 if (!regex.matches(email)) "Неверный формат для Email"
                 else null
             val ageMessage =
-                if (age !in 0..120) "Недопустимое значение возраста"
+                if (age !in 10..120) "Недопустимое значение возраста"
                 else null
             val heightMessage =
                 if (height !in 100.0f..260.0f) "Недопустимое значение роста"
